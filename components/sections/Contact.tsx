@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { FaPaperPlane, FaEnvelope, FaMapMarkerAlt, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
+import { FaPaperPlane, FaEnvelope, FaPhone, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
 import { useScrollSection } from '@/hooks/use-scroll-section';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface FormData {
   name: string;
@@ -14,6 +15,7 @@ interface FormData {
 
 const Contact = () => {
   const { ref, isVisible } = useScrollSection();
+  const { t } = useLanguage();
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -65,20 +67,23 @@ const Contact = () => {
     }
   };
 
-  const contactInfo = [
-    {
-      icon: FaEnvelope,
-      label: 'Email',
-      value: 'michaelhassan.in@gmail.com',
-      href: 'mailto:michaelhassan.in@gmail.com',
-    },
-    {
-      icon: FaMapMarkerAlt,
-      label: 'Location',
-      value: 'Buffalo, New York 14225',
-      href: null,
-    },
-  ];
+  const contactInfo = useMemo(
+    () => [
+      {
+        icon: FaEnvelope,
+        label: t.contact.labels.email,
+        value: 'gustavomaximo_@outlook.com',
+        href: 'mailto:gustavomaximo_@outlook.com',
+      },
+      {
+        icon: FaPhone,
+        label: t.contact.labels.phone,
+        value: '+55 98 9 9233-6612',
+        href: 'tel:+5598992336612',
+      },
+    ],
+    [t.contact.labels.email, t.contact.labels.phone]
+  );
 
   return (
     <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 scroll-mt-20 relative overflow-hidden" ref={ref}>
@@ -99,7 +104,7 @@ const Contact = () => {
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Get In Touch
+            {t.contact.heading}
           </motion.h2>
           <motion.p
             className="text-foreground/70 text-lg max-w-2xl mx-auto"
@@ -107,7 +112,7 @@ const Contact = () => {
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Have a project in mind or want to collaborate? I would love to hear from you.
+            {t.contact.subtitle}
           </motion.p>
         </motion.div>
 
@@ -123,7 +128,7 @@ const Contact = () => {
               const Icon = info.icon;
               const content = (
                 <motion.div
-                  key={index}
+                  key={`${info.label}-${index}`}
                   className="group relative p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-all duration-300"
                   whileHover={{ y: -4 }}
                   initial={{ opacity: 0, y: 20 }}
@@ -168,10 +173,10 @@ const Contact = () => {
             <Card className="bg-card text-card-foreground border-border shadow-xl">
               <CardHeader className="pb-6">
                 <CardTitle className="text-2xl font-bold text-primary">
-                  Send a Message
+                  {t.contact.cardTitle}
                 </CardTitle>
                 <p className="text-foreground/70 text-sm mt-2">
-                  Fill out the form below and I will get back to you as soon as possible.
+                  {t.contact.cardIntro}
                 </p>
               </CardHeader>
               <CardContent>
@@ -184,7 +189,7 @@ const Contact = () => {
                     transition={{ duration: 0.5, delay: 0.5 }}
                   >
                     <label htmlFor="name" className="text-foreground text-sm font-medium block">
-                      Name <span className="text-primary">*</span>
+                      {t.contact.name} <span className="text-primary">*</span>
                     </label>
                     <input
                       type="text"
@@ -195,7 +200,7 @@ const Contact = () => {
                       onFocus={() => setFocusedField('name')}
                       onBlur={() => setFocusedField(null)}
                       required
-                      placeholder="John Doe"
+                      placeholder={t.contact.placeholders.name}
                       className={`w-full px-4 py-3.5 rounded-lg bg-input border transition-all duration-300 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary ${
                         focusedField === 'name' ? 'border-primary/50' : 'border-border'
                       }`}
@@ -210,7 +215,7 @@ const Contact = () => {
                     transition={{ duration: 0.5, delay: 0.6 }}
                   >
                     <label htmlFor="email" className="text-foreground text-sm font-medium block">
-                      Email <span className="text-primary">*</span>
+                      {t.contact.email} <span className="text-primary">*</span>
                     </label>
                     <input
                       type="email"
@@ -221,7 +226,7 @@ const Contact = () => {
                       onFocus={() => setFocusedField('email')}
                       onBlur={() => setFocusedField(null)}
                       required
-                      placeholder="john.doe@example.com"
+                      placeholder={t.contact.placeholders.email}
                       className={`w-full px-4 py-3.5 rounded-lg bg-input border transition-all duration-300 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary ${
                         focusedField === 'email' ? 'border-primary/50' : 'border-border'
                       }`}
@@ -236,7 +241,8 @@ const Contact = () => {
                     transition={{ duration: 0.5, delay: 0.7 }}
                   >
                     <label htmlFor="phone" className="text-foreground text-sm font-medium block">
-                      Phone <span className="text-muted-foreground text-xs">(optional)</span>
+                      {t.contact.phone}{' '}
+                      <span className="text-muted-foreground text-xs">{t.contact.phoneOptional}</span>
                     </label>
                     <input
                       type="tel"
@@ -246,7 +252,7 @@ const Contact = () => {
                       onChange={handleChange}
                       onFocus={() => setFocusedField('phone')}
                       onBlur={() => setFocusedField(null)}
-                      placeholder="+1 (555) 123-4567"
+                      placeholder={t.contact.placeholders.phone}
                       className={`w-full px-4 py-3.5 rounded-lg bg-input border transition-all duration-300 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary ${
                         focusedField === 'phone' ? 'border-primary/50' : 'border-border'
                       }`}
@@ -261,7 +267,7 @@ const Contact = () => {
                     transition={{ duration: 0.5, delay: 0.8 }}
                   >
                     <label htmlFor="message" className="text-foreground text-sm font-medium block">
-                      Message <span className="text-primary">*</span>
+                      {t.contact.message} <span className="text-primary">*</span>
                     </label>
                     <textarea
                       id="message"
@@ -272,7 +278,7 @@ const Contact = () => {
                       onBlur={() => setFocusedField(null)}
                       required
                       rows={6}
-                      placeholder="Tell me about your project or just say hello..."
+                      placeholder={t.contact.placeholders.message}
                       className={`w-full px-4 py-3.5 rounded-lg bg-input border transition-all duration-300 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary resize-y ${
                         focusedField === 'message' ? 'border-primary/50' : 'border-border'
                       }`}
@@ -298,7 +304,7 @@ const Contact = () => {
                       >
                         <FaPaperPlane className="text-base" />
                       </motion.div>
-                      <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+                      <span>{isSubmitting ? t.contact.sending : t.contact.send}</span>
                     </motion.button>
                   </motion.div>
 
@@ -312,7 +318,7 @@ const Contact = () => {
                         className="flex items-center gap-3 p-4 rounded-lg bg-primary/10 border border-primary/20 text-primary"
                       >
                         <FaCheckCircle className="text-lg flex-shrink-0" />
-                        <p className="text-sm font-medium">Message sent successfully! I will get back to you soon.</p>
+                        <p className="text-sm font-medium">{t.contact.success}</p>
                       </motion.div>
                     )}
                     {submitStatus === 'error' && (
@@ -323,7 +329,7 @@ const Contact = () => {
                         className="flex items-center gap-3 p-4 rounded-lg bg-destructive/10 border border-destructive/20 text-destructive"
                       >
                         <FaExclamationCircle className="text-lg flex-shrink-0" />
-                        <p className="text-sm font-medium">Failed to send message. Please try again.</p>
+                        <p className="text-sm font-medium">{t.contact.error}</p>
                       </motion.div>
                     )}
                   </AnimatePresence>

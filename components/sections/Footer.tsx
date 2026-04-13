@@ -2,15 +2,18 @@
 "use client"
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaLinkedin, FaEnvelope, FaInstagram } from 'react-icons/fa';
 import { useMediaQuery } from '@/hooks/use-media-query';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer: React.FC = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
+  const { t } = useLanguage();
 
   const socialLinks = [
-    { icon: FaLinkedin, href: 'https://www.linkedin.com/in/michael-hassan-in' },
-    { icon: FaEnvelope, href: 'mailto:michaelhassan.in@gmail.com' },
+    { icon: FaInstagram, href: 'https://www.instagram.com/gustavomaximo_/' },
+    { icon: FaLinkedin, href: 'https://www.linkedin.com/in/gustavo-m%C3%A1ximo-mentor' },
+    { icon: FaEnvelope, href: 'mailto:gustavomaximo_@outlook.com' },
   ];
 
   return (
@@ -45,9 +48,9 @@ const Footer: React.FC = () => {
           transition={{ delay: 0.2, duration: 0.5 }}
         >
           <p className="text-lg font-mono">
-            Designed & Built by{' '}
+            {t.footer.designedBy}{' '}
             <span className="text-primary font-bold">
-              Michael Hassan
+              {t.hero.name}
             </span>{' '}
             <span className="animate-pulse inline-block"></span>
           </p>

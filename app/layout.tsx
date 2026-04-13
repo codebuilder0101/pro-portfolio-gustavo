@@ -3,44 +3,17 @@ import type { Metadata } from "next";
 import { inter, jetbrain_mono } from "@/app/fonts";
 import "./globals.css";
 import { ThemeProvider } from "@/app/ThemeProvider";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 import { FloatingNav } from "@/components/ui/FloatingNavbar";
-import { FaHome, FaUser, FaBriefcase, FaCode, FaEnvelope, FaFileAlt } from "react-icons/fa";
 import StickyIcons from "@/components/sections/StickyIcons";
 import Footer from "@/components/sections/Footer";
 import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
-  title: "Michael Hassan",
-  description: "Senior AI Full-Stack Engineer with 7+ years of experience building modern web, mobile, and AI-driven platforms. Specialized in Javascript-based frontend architectures and backend systems built with NestJS, Node.js, and Python.",
+  title: "Gustavo Máximo",
+  description:
+    "Executivo, especialista em liderança situacional, docente, mentor e criador do Método C.O.M.A.V. Gestão estratégica, desenvolvimento de pessoas e liderança em ambientes de alta complexidade.",
 };
-
-const navItems = [
-  {
-    name: "About",
-    link: "#about",
-    icon: <FaUser />,
-  },
-  {
-    name: "Work",
-    link: "#work",
-    icon: <FaBriefcase />,
-  },
-  {
-    name: "Projects",
-    link: "#projects",
-    icon: <FaCode />,
-  },
-  {
-    name: "Contact",
-    link: "#contact",
-    icon: <FaEnvelope />,
-  },
-  {
-    name: "Resume",
-    icon: <FaFileAlt />,
-    link: "/resume.pdf",
-  },
-];
 
 export default function RootLayout({
   children,
@@ -48,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
         <link
           rel="icon"
@@ -56,15 +29,10 @@ export default function RootLayout({
           sizes="32x32"
           href="./favicon-32x32.png"
         />
-        <meta property="og:title" content="Michael Hassan - Senior AI Fullstack Engineer" />
+        <meta property="og:title" content="Gustavo Máximo — Executivo, docente e mentor em liderança" />
         <meta
           property="og:description"
-          content="Senior AI Full-Stack Engineer with 7+ years of experience building modern web, mobile, and AI-driven platforms. Specialized in Javascript-based frontend architectures and backend systems built with NestJS, Node.js, and Python."
-        />
-        <meta property="og:url" content="https://michaelhassan.dev" />
-        <meta
-          property="og:image"
-          content="https://krishnakumar.dev/pics/web_screenshot.png"
+          content="Especialista em liderança situacional, docente e criador do Método C.O.M.A.V. Gestão estratégica e desenvolvimento de pessoas."
         />
         <meta property="og:type" content="website" />
       </head>
@@ -77,10 +45,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <FloatingNav navItems={navItems} />
-          <StickyIcons />
-          {children}
-          <Footer />
+          <LanguageProvider>
+            <FloatingNav />
+            <StickyIcons />
+            {children}
+            <Footer />
+          </LanguageProvider>
           <Analytics />
         </ThemeProvider>
       </body>

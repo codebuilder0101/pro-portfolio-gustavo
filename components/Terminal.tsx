@@ -17,14 +17,14 @@ const Terminal = () => {
 
   const codeLines: CodeLines = useMemo(() => ({
     python: [
-      'print("Hello, World! 👋 I\'m Michael Hassan")',
-      'print("Based in New York, United States")',
-      'print("Senior AI Full-Stack Engineer with 7+ years of experience building modern web, mobile, and AI-driven platforms. Specialized in Javascript-based frontend architectures and backend systems built with NestJS, Node.js, and Python. Proven track record delivering AI-enabled products including intelligent assistants, automation pipelines, and data-driven services integrated with OpenAI and LangChain.")'
+      'print("Olá! 👋 Sou Gustavo Máximo")',
+      'print("Executivo | Liderança situacional | Docente | Mentor | Método C.O.M.A.V.")',
+      'print("Atuo na interseção entre gestão estratégica, desenvolvimento de pessoas e liderança em ambientes de alta complexidade.")'
     ],
     javascript: [
-      'console.log("Hello, World! 👋 I\'m Michael Hassan");',
-      'console.log("Based in New York, United States");',
-      'console.log("Senior AI Full-Stack Engineer with 7+ years of experience building modern web, mobile, and AI-driven platforms. Specialized in Javascript-based frontend architectures and backend systems built with NestJS, Node.js, and Python. Proven track record delivering AI-enabled products including intelligent assistants, automation pipelines, and data-driven services integrated with OpenAI and LangChain.");'
+      'console.log("Olá! 👋 Sou Gustavo Máximo");',
+      'console.log("Executivo | Liderança situacional | Docente | Mentor | Método C.O.M.A.V.");',
+      'console.log("Atuo na interseção entre gestão estratégica, desenvolvimento de pessoas e liderança em ambientes de alta complexidade.");'
     ]
   }), []);
 

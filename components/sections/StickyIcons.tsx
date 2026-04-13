@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect } from 'react';
-import { FaLinkedin } from 'react-icons/fa';
+import { FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { motion, useAnimation } from 'framer-motion';
 import { useMediaQuery } from '@/hooks/use-media-query';
 
@@ -15,7 +15,8 @@ const StickyIcons: React.FC = () => {
   const isLargeScreen = useMediaQuery('(min-width: 768px)');
 
   const socialLinks: IconLinkProps[] = [
-    { icon: FaLinkedin, href: 'https://www.linkedin.com/in/michael-hassan-in' },
+    { icon: FaInstagram, href: 'https://www.instagram.com/gustavomaximo_/' },
+    { icon: FaLinkedin, href: 'https://www.linkedin.com/in/gustavo-m%C3%A1ximo-mentor' },
   ];
 
   useEffect(() => {
@@ -72,10 +73,10 @@ const StickyIcons: React.FC = () => {
           animate={contentControls}
         >
           <a
-            href="mailto:michaelhassan.in@gmail.com"
+            href="mailto:gustavomaximo_@outlook.com"
             className="text-foreground hover:text-primary transition-colors duration-200 pb-2"
           >
-            michaelhassan.in@gmail.com
+            gustavomaximo_@outlook.com
           </a>
         </motion.div>
         <motion.div 

@@ -4,12 +4,13 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { workExperiences, WorkExperience } from '@/data/workExperience';
 import { useScrollSection } from '@/hooks/use-scroll-section';
-import { FaBriefcase, FaMapMarkerAlt, FaLink } from 'react-icons/fa';
-import Image from 'next/image';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { str } from '@/lib/locale-copy';
 
 const Work: React.FC = () => {
   const [activeExperience, setActiveExperience] = useState<WorkExperience>(workExperiences[0]);
   const { ref, isVisible } = useScrollSection();
+  const { t, locale } = useLanguage();
 
   return (
     <section id="work" className="py-20 px-4 sm:px-6 lg:px-8" ref={ref}>
@@ -19,7 +20,7 @@ const Work: React.FC = () => {
         animate={isVisible ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5 }}
       >
-        Work Experience
+        {t.work.heading}
       </motion.h2>
       
       <div className="max-w-6xl mx-auto">
@@ -33,7 +34,7 @@ const Work: React.FC = () => {
           >
             <div className="bg-card rounded-lg p-4 border border-border">
               <h3 className="text-sm font-semibold text-foreground/70 mb-4 uppercase tracking-wider">
-                Companies
+                {t.work.companies}
               </h3>
               <div className="space-y-2">
                 {workExperiences.map((experience, index) => (
@@ -41,15 +42,15 @@ const Work: React.FC = () => {
                     key={index}
                     onClick={() => setActiveExperience(experience)}
                     className={`w-full text-left p-3 rounded-lg transition-all duration-200 ${
-                      activeExperience.company === experience.company
+                      str(locale, activeExperience.company) === str(locale, experience.company)
                         ? 'bg-primary/20 text-primary border-l-4 border-primary'
                         : 'hover:bg-muted/50 text-foreground'
                     }`}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <div className="font-medium">{experience.company}</div>
-                    <div className="text-xs text-foreground/60 mt-1">{experience.duration}</div>
+                    <div className="font-medium">{str(locale, experience.company)}</div>
+                    <div className="text-xs text-foreground/60 mt-1">{str(locale, experience.duration)}</div>
                   </motion.button>
                 ))}
               </div>
@@ -65,7 +66,7 @@ const Work: React.FC = () => {
           >
             <div className="bg-card rounded-lg p-6 md:p-8 border border-border">
               <h3 className="text-sm font-semibold text-foreground/70 mb-4 uppercase tracking-wider">
-                Details
+                {t.work.details}
               </h3>
               
               <div className="mb-6">
@@ -73,21 +74,21 @@ const Work: React.FC = () => {
                   <div className="flex-1">
                     <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 flex items-center justify-between gap-4 flex-wrap">
                       <span className='text-lg'>
-                        {activeExperience.position}
+                        {str(locale, activeExperience.position)}
                       </span>
                       <span className='flex items-center gap-2'>
                         <a href={`${activeExperience.logo}`} target="_blank" rel="noopener noreferrer" className="text-primary transition-colors">
-                         {activeExperience.company}
+                         {str(locale, activeExperience.company)}
                         </a>
                       </span>
                     </h2>
                     <div className="flex flex-wrap items-center gap-4 text-sm text-foreground/70">
                       {activeExperience.location && (
                         <div className="flex items-center gap-1">
-                          <span>{activeExperience.location}</span>
+                          <span>{str(locale, activeExperience.location)}</span>
                         </div>
                       )}
-                      <span>{activeExperience.duration}</span>
+                      <span>{str(locale, activeExperience.duration)}</span>
                     </div>
                   </div>
                 </div>
@@ -104,7 +105,7 @@ const Work: React.FC = () => {
                     className="flex gap-3"
                   >
                     <span className="text-primary mt-1.5 flex-shrink-0">•</span>
-                    <p className="text-foreground/90 leading-relaxed">{item}</p>
+                    <p className="text-foreground/90 leading-relaxed">{str(locale, item)}</p>
                   </motion.div>
                 ))}
               </div>
@@ -112,7 +113,7 @@ const Work: React.FC = () => {
               {/* Skills */}
               <div className="mt-6 pt-6 border-t border-border">
                 <h4 className="text-sm font-semibold text-foreground/70 mb-3 uppercase tracking-wider">
-                  Technologies
+                  {t.work.technologies}
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {activeExperience.skills.map((skill, index) => (
@@ -124,7 +125,7 @@ const Work: React.FC = () => {
                       className="flex items-center gap-2 bg-primary/10 text-primary px-3 py-1.5 rounded-lg text-sm"
                     >
                       {React.createElement(skill.icon, { className: "text-base" })}
-                      <span>{skill.name}</span>
+                      <span>{str(locale, skill.name)}</span>
                     </motion.div>
                   ))}
                 </div>

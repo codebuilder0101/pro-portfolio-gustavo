@@ -6,9 +6,6 @@ import Work from "@/components/sections/Work";
 import { AnimatePresence } from 'framer-motion';
 import Terminal from '@/components/Terminal';
 import HeroTitle from '@/components/HeroTitle';
-import Projects from "@/components/sections/Projects";
-import SkillsGrid from '@/components/SkillsGrid';
-
 const Home = () => {
   return (
     <AnimatePresence>
@@ -16,10 +13,8 @@ const Home = () => {
       <div className="max-w-7xl w-full">
         <HeroTitle />
           <AboutMe />
-        <SkillsGrid />
         <Terminal />
         <Work />
-          <Projects/>
         <Contact />
       </div>
     </main>

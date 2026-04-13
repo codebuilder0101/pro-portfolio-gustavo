@@ -1,7 +1,11 @@
 // components/WorkPopup.tsx
-import React, { forwardRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { WorkExperience } from '@/data/workExperience';
+"use client";
+
+import React, { forwardRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { WorkExperience } from "@/data/workExperience";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { str } from "@/lib/locale-copy";
 
 interface WorkPopupProps {
   active: WorkExperience | null;
@@ -9,6 +13,8 @@ interface WorkPopupProps {
 }
 
 const WorkPopup = forwardRef<HTMLDivElement, WorkPopupProps>(({ active, setActive }, ref) => {
+  const { locale, t } = useLanguage();
+
   if (!active) return null;
 
   return (
@@ -27,38 +33,38 @@ const WorkPopup = forwardRef<HTMLDivElement, WorkPopupProps>(({ active, setActiv
           transition={{ type: "spring", damping: 15, stiffness: 100 }}
           className="bg-card text-card-foreground p-8 rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto"
         >
-          <motion.h3 
+          <motion.h3
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.1 }}
             className="text-2xl font-bold mb-2"
           >
-            {active.position}
+            {str(locale, active.position)}
           </motion.h3>
-          <motion.p 
+          <motion.p
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
             className="text-primary mb-1"
           >
-            {active.company}
+            {str(locale, active.company)}
           </motion.p>
-          <motion.p 
+          <motion.p
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
             className="text-sm text-gray-500 mb-4"
           >
-            {active.duration}
+            {str(locale, active.duration)}
           </motion.p>
-          <motion.div 
+          <motion.div
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
             className="flex flex-wrap gap-2 mb-4"
           >
             {active.skills.map((skill, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
@@ -66,24 +72,24 @@ const WorkPopup = forwardRef<HTMLDivElement, WorkPopupProps>(({ active, setActiv
                 className="flex items-center bg-primary/10 text-primary px-2 py-1 rounded"
               >
                 {React.createElement(skill.icon, { className: "mr-1" })}
-                <span className="text-xs">{skill.name}</span>
+                <span className="text-xs">{str(locale, skill.name)}</span>
               </motion.div>
             ))}
           </motion.div>
-          <motion.ul 
+          <motion.ul
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6 }}
             className="list-disc pl-5 space-y-2"
           >
             {active.description.map((item, i) => (
-              <motion.li 
+              <motion.li
                 key={i}
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.7 + i * 0.1 }}
               >
-                {item}
+                {str(locale, item)}
               </motion.li>
             ))}
           </motion.ul>
@@ -94,7 +100,7 @@ const WorkPopup = forwardRef<HTMLDivElement, WorkPopupProps>(({ active, setActiv
             className="mt-6 bg-primary text-primary-foreground px-4 py-2 rounded"
             onClick={() => setActive(null)}
           >
-            Close
+            {t.common.close}
           </motion.button>
         </motion.div>
       </motion.div>
@@ -102,6 +108,6 @@ const WorkPopup = forwardRef<HTMLDivElement, WorkPopupProps>(({ active, setActiv
   );
 });
 
-WorkPopup.displayName = 'WorkPopup';
+WorkPopup.displayName = "WorkPopup";
 
 export default WorkPopup;
