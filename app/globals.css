@@ -1,98 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&family=Parisienne&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --background: 0 0% 0%;
+    --foreground: 36 56% 89%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card: 0 0% 7%;
+    --card-foreground: 36 56% 89%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 36 56% 89%;
 
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 34 57% 70%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 36 56% 89%;
 
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 36 30% 75%;
 
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent: 34 57% 70%;
+    --accent-foreground: 0 0% 0%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
+    --border: 34 30% 35%;
+    --input: 0 0% 14%;
+    --ring: 34 57% 70%;
 
     --radius: 0.5rem;
+
+    --title-color: rgb(247, 229, 205);
+    --primary-color: burlywood;
   }
 
   .dark {
-    --background: #0a192f;
-    --foreground: #e6f1ff;
+    --background: 0 0% 0%;
+    --foreground: 36 56% 89%;
 
-    --card: #112240;
-    --card-foreground: #a8b2d1;
+    --card: 0 0% 7%;
+    --card-foreground: 36 56% 89%;
 
-    --popover: #112240;
-    --popover-foreground: #e6f1ff;
+    --popover: 0 0% 7%;
+    --popover-foreground: 36 56% 89%;
 
-    --primary: #64ffda;
-    --primary-foreground: #0a192f;
+    --primary: 34 57% 70%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: #233554;
-    --secondary-foreground: #a8b2d1;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 36 56% 89%;
 
-    --muted: #233554;
-    --muted-foreground: #8892b0;
+    --muted: 0 0% 14%;
+    --muted-foreground: 36 30% 75%;
 
-    --accent: #ffd700;
-    --accent-foreground: #0a192f;
+    --accent: 34 57% 70%;
+    --accent-foreground: 0 0% 0%;
 
-    --destructive: #ff6b6b;
-    --destructive-foreground: #0a192f;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 36 56% 89%;
 
-    --border: #1e2d3d;
-    --input: #1e2d3d;
-    --ring: #64ffda;
+    --border: 34 30% 35%;
+    --input: 0 0% 14%;
+    --ring: 34 57% 70%;
 
     --radius: 0.5rem;
   }
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+    font-family: 'Ubuntu', 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    background-color: #000 !important;
+    color: var(--title-color);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', 'Ubuntu', sans-serif;
+    color: var(--title-color);
   }
   button {
     @apply active:outline-none;
   }
-  html {
-    scroll-behavior: smooth;
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #111; }
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 12px;
+  }
+  ::selection {
+    background: burlywood;
+    color: #000;
   }
 }
 
 @layer utilities {
   .heading {
     @apply font-bold text-4xl md:text-5xl text-center;
+    color: var(--title-color);
   }
+
+  .text-title { color: var(--title-color); }
+  .text-burly { color: var(--primary-color); }
 
   .black-gradient {
-    background: linear-gradient(90deg, #161a31 0%, #06091f 100%);
+    background: linear-gradient(90deg, #0a0a0a 0%, #000 100%);
   }
 
-  .animate-blink {
-    animation: blink 1s step-start infinite;
-  }
+  .animate-blink { animation: blink 1s step-start infinite; }
 
   .writing-vertical-rl {
     writing-mode: vertical-rl;
@@ -100,25 +123,177 @@
   }
 
   .floating-navbar {
-    background-color: rgba(var(--background), 0.95);
+    background-color: rgba(0, 0, 0, 0.7);
+    border-color: rgba(222, 184, 135, 0.25);
   }
-
   @supports (backdrop-filter: blur(4px)) {
     .floating-navbar {
-      background-color: rgba(var(--background), 0.8);
-      backdrop-filter: blur(4px);
+      background-color: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(6px);
     }
+  }
+
+  .title-glow {
+    color: var(--title-color);
+    text-shadow: 0 0 0 rgb(226, 153, 57);
+    animation: loading 2s ease-in-out infinite alternate;
   }
 }
 
 @keyframes blink {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@keyframes loading {
+  to {
+    text-shadow: 20px 0 70px lightslategrey;
+    color: var(--primary-color);
   }
 }
+
+/* ---------- Starfield background ---------- */
+.starfield {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(35, 35, 35, 0.6) 0%, #000 60%),
+    #000;
+}
+
+/* ---------- Mouse-trail particle canvas ---------- */
+.mouse-trail {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9998;
+  pointer-events: none;
+}
+
+/* ---------- Custom cursor ---------- */
+@media (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid rgba(222, 184, 135, 0.7);
+  border-radius: 9999px;
+  background: rgba(222, 184, 135, 0.08);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor.custom-cursor--hover {
+  width: 3rem;
+  height: 3rem;
+  background: rgba(222, 184, 135, 0.25);
+  border-color: rgba(247, 229, 205, 1);
+}
+
+.custom-cursor__dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  background: var(--title-color);
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+}
+
+@media (pointer: coarse) {
+  .custom-cursor, .custom-cursor__dot { display: none; }
+}
+
+/* ---------- Scroll-down indicator ---------- */
+.scroll-btn {
+  display: block;
+  position: fixed;
+  width: 34px;
+  height: 54px;
+  z-index: 50;
+  border-radius: 32px;
+  border: 2px solid rgba(247, 229, 205, 0.5);
+  background: transparent;
+  padding: 0;
+  bottom: 40px;
+  right: 2vw;
+  transform: scale(.9);
+  pointer-events: none;
+  user-select: none;
+  animation: sb-bounce 1.5s infinite;
+}
+
+.scroll-btn__sign {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -150%);
+  opacity: 1;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: .15em;
+  color: rgb(247, 229, 205);
+  background-image: linear-gradient(110deg, rgba(0,0,0,.00001) 10%, burlywood 10%, burlywood 20%, rgba(0,0,0,.00001) 20%, rgba(0,0,0,.00001) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-repeat: no-repeat;
+  background-size: 200% 200%;
+  background-position: 50% 0%;
+  animation: sb-slide 4s infinite 1s;
+  white-space: nowrap;
+}
+
+.scroll-btn__arrow {
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: calc(50% - 2px);
+  width: 4px;
+  height: 12px;
+  border-radius: 2px;
+  background: #eee;
+  animation: sb-bounce-down 2s infinite 1s;
+}
+
+@keyframes sb-bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0) scale(.9); }
+  40% { transform: translateY(-10px) scale(.9); }
+  60% { transform: translateY(-5px) scale(.9); }
+}
+
+@keyframes sb-bounce-down {
+  0%, 20%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-30%); }
+  50% { transform: translateY(15%); }
+  60% { transform: translateY(-15%); }
+}
+
+@keyframes sb-slide {
+  0% { background-position: 50% 0%; }
+  25% { background-position: -100% 0%; }
+  100% { background-position: -100% 0%; }
+}
+
+/* Keep content above the starfield */
+main, nav, footer, header, section { position: relative; z-index: 2; }

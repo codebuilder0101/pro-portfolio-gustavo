@@ -7,6 +7,10 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { FloatingNav } from "@/components/ui/FloatingNavbar";
 import StickyIcons from "@/components/sections/StickyIcons";
 import Footer from "@/components/sections/Footer";
+import CustomCursor from "@/components/CustomCursor";
+import Starfield from "@/components/Starfield";
+import MouseTrail from "@/components/MouseTrail";
+import ScrollDown from "@/components/ScrollDown";
 import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
@@ -46,9 +50,13 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <LanguageProvider>
+            <Starfield />
+            <MouseTrail />
+            <CustomCursor />
             <FloatingNav />
             <StickyIcons />
             {children}
+            <ScrollDown />
             <Footer />
           </LanguageProvider>
           <Analytics />

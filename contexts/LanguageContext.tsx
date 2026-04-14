@@ -29,8 +29,13 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     setMounted(true);
     try {
       const stored = window.localStorage.getItem(STORAGE_KEY) as Locale | null;
-      if (stored === "pt" || stored === "en") {
+      if (stored && ["pt", "en", "es", "fr"].includes(stored)) {
         setLocaleState(stored);
+        return;
+      }
+      const nav = (navigator.language || "").slice(0, 2).toLowerCase();
+      if (nav === "en" || nav === "es" || nav === "fr" || nav === "pt") {
+        setLocaleState(nav as Locale);
       }
     } catch {
       /* ignore */
@@ -39,7 +44,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!mounted) return;
-    document.documentElement.lang = locale === "pt" ? "pt-BR" : "en";
+    const htmlLang = { pt: "pt-BR", en: "en", es: "es", fr: "fr" }[locale];
+    document.documentElement.lang = htmlLang;
     document.title = `${translations[locale].hero.name} · Portfolio`;
     try {
       window.localStorage.setItem(STORAGE_KEY, locale);
@@ -53,7 +59,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const toggleLocale = useCallback(() => {
-    setLocaleState((prev) => (prev === "pt" ? "en" : "pt"));
+    const order: Locale[] = ["pt", "en", "es", "fr"];
+    setLocaleState((prev) => order[(order.indexOf(prev) + 1) % order.length]);
   }, []);
 
   const value = useMemo<LanguageContextValue>(
