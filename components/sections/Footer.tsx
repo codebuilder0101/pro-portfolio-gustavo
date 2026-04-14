@@ -47,13 +47,6 @@ const Footer: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-          <p className="text-lg font-mono">
-            {t.footer.designedBy}{' '}
-            <span className="text-primary font-bold">
-              {t.hero.name}
-            </span>{' '}
-            <span className="animate-pulse inline-block"></span>
-          </p>
         </motion.div>
       </div>
     </motion.footer>
