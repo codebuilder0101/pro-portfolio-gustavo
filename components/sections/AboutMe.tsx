@@ -2,7 +2,6 @@
 import React from 'react'
 import { motion } from 'framer-motion';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import StyledPic from '../Styledpic';
 import { FaLightbulb, FaCode, FaPizzaSlice, FaHiking, FaPuzzlePiece, FaChalkboardTeacher } from 'react-icons/fa';
 import { useScrollSection } from '@/hooks/use-scroll-section';
 import { CardSpotlight } from '../ui/card-spotlight';

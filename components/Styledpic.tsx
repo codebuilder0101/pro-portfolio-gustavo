@@ -34,7 +34,7 @@ const StyledPic: React.FC = () => {
         >
           <div className="absolute inset-0 scale-150 origin-top">
           <Image
-            src="/pics/photo.png"
+            src="/image.jpeg"
             alt="Profile"
             fill
             className="rounded-lg object-cover"

@@ -19,6 +19,13 @@ export const translations = {
       title:
         "Executivo | Especialista em Liderança Situacional | Docente | Mentor | Criador do Método C.O.M.A.V.",
     },
+    intro: {
+      quote: "Não podemos ter tudo, mas tudo está ao nosso alcance",
+      paragraphs: [
+        "O sucesso nos negócios raramente é alcançado sozinho. Por trás de cada grande empreendedor, geralmente há um mentor de confiança — um profissional experiente que oferece orientação, compartilha insights valiosos e ajuda a navegar pelos desafios inevitáveis de construir uma carreira ou empresa próspera. Seja na tomada de decisões estratégicas, no desenvolvimento de liderança ou na superação de obstáculos, a mentoria acelera o crescimento e oferece um atalho para a sabedoria que, de outra forma, levaria anos para ser adquirida por tentativa e erro.",
+        "Os maiores mentores de negócios do mundo desempenharam um papel fundamental na formação de alguns dos líderes mais bem-sucedidos de hoje. Esses profissionais trazem décadas de experiência, expertise no setor e um histórico comprovado de ajudar outros a alcançarem todo o seu potencial. Seja você um aspirante a empreendedor ou um empresário estabelecido em busca de orientação, aprender com os melhores pode fazer toda a diferença.",
+      ],
+    },
     about: {
       heading: "Sobre mim",
       paragraphs: [
@@ -84,6 +91,13 @@ export const translations = {
       title:
         "Executive | Situational Leadership Specialist | Educator | Mentor | Creator of the C.O.M.A.V. Method",
     },
+    intro: {
+      quote: "We cannot have everything, but everything is within our reach",
+      paragraphs: [
+        "Success in business is rarely achieved alone. Behind every great entrepreneur, there's often a trusted mentor—a seasoned professional who provides guidance, shares valuable insights, and helps navigate the inevitable challenges of building a thriving career or company. Whether it's strategic decision-making, leadership development, or overcoming setbacks, mentorship accelerates growth and provides a shortcut to wisdom that might otherwise take years to acquire through trial and error.",
+        "The world's top business mentors have played a pivotal role in shaping some of the most successful leaders today. These individuals bring decades of experience, industry expertise, and a proven track record of helping others achieve their full potential. Whether you're an aspiring entrepreneur or an established business owner looking for guidance, learning from the best can make all the difference.",
+      ],
+    },
     about: {
       heading: "About me",
       paragraphs: [
@@ -147,6 +161,13 @@ export const translations = {
       name: "Gustavo Máximo",
       title:
         "Ejecutivo | Especialista en Liderazgo Situacional | Docente | Mentor | Creador del Método C.O.M.A.V.",
+    },
+    intro: {
+      quote: "No podemos tenerlo todo, pero todo está a nuestro alcance",
+      paragraphs: [
+        "El éxito en los negocios rara vez se logra en solitario. Detrás de cada gran emprendedor suele haber un mentor de confianza: un profesional experimentado que brinda orientación, comparte ideas valiosas y ayuda a navegar los desafíos inevitables de construir una carrera o empresa próspera. Ya sea en la toma de decisiones estratégicas, el desarrollo de liderazgo o la superación de obstáculos, la mentoría acelera el crecimiento y ofrece un atajo a la sabiduría que, de otro modo, requeriría años de prueba y error.",
+        "Los mejores mentores de negocios del mundo han desempeñado un papel fundamental en la formación de algunos de los líderes más exitosos de la actualidad. Estas personas aportan décadas de experiencia, conocimiento del sector y un historial comprobado de ayudar a otros a alcanzar su máximo potencial. Ya seas un emprendedor aspirante o un empresario consolidado en busca de orientación, aprender de los mejores puede marcar la diferencia.",
+      ],
     },
     about: {
       heading: "Sobre mí",
@@ -212,6 +233,13 @@ export const translations = {
       name: "Gustavo Máximo",
       title:
         "Dirigeant | Spécialiste en leadership situationnel | Enseignant | Mentor | Créateur de la méthode C.O.M.A.V.",
+    },
+    intro: {
+      quote: "Nous ne pouvons pas tout avoir, mais tout est à notre portée",
+      paragraphs: [
+        "Le succès en affaires est rarement atteint seul. Derrière chaque grand entrepreneur se trouve souvent un mentor de confiance — un professionnel expérimenté qui offre des conseils, partage des idées précieuses et aide à surmonter les défis inévitables liés à la construction d'une carrière ou d'une entreprise florissante. Qu'il s'agisse de prise de décisions stratégiques, de développement du leadership ou de surmonter des revers, le mentorat accélère la croissance et offre un raccourci vers une sagesse qui, autrement, prendrait des années à acquérir par essais et erreurs.",
+        "Les meilleurs mentors d'affaires du monde ont joué un rôle essentiel dans la formation de certains des leaders les plus prospères d'aujourd'hui. Ces personnes apportent des décennies d'expérience, une expertise sectorielle et un bilan éprouvé d'aide à la réalisation du plein potentiel des autres. Que vous soyez un entrepreneur en devenir ou un chef d'entreprise établi en quête de conseils, apprendre des meilleurs peut faire toute la différence.",
+      ],
     },
     about: {
       heading: "À propos de moi",
