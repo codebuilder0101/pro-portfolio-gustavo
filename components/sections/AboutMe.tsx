@@ -26,7 +26,7 @@ const AboutMe: React.FC = () => {
               {t.about.heading}
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-sm sm:text-base text-foreground space-y-4">
+          <CardContent className="text-sm sm:text-base text-foreground space-y-4 text-justify">
             {t.about.paragraphs.map((paragraph, i) => (
               <p key={i}>{paragraph}</p>
             ))}

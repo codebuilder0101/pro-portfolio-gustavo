@@ -32,7 +32,7 @@ const Intro: React.FC = () => {
         <blockquote className="text-lg sm:text-xl italic font-semibold text-primary border-l-4 border-primary pl-4">
           “{t.intro.quote}”
         </blockquote>
-        <div className="text-sm sm:text-base text-foreground space-y-4">
+        <div className="text-sm sm:text-base text-foreground space-y-4 text-justify">
           {t.intro.paragraphs.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
