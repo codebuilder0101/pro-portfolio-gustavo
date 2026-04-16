@@ -52,7 +52,7 @@ const Work: React.FC = () => {
                   </p>
                   <div className="mt-4 space-y-2">
                     {experience.description.map((item, i) => (
-                      <p key={i} className="text-sm text-foreground/85 leading-relaxed">
+                      <p key={i} className="text-sm text-foreground/85 leading-relaxed text-justify">
                         {str(locale, item)}
                       </p>
                     ))}
